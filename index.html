@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karma Technolabs Api Doc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="header-top">
+        <div class="header-logo">
+          <button class="button-nav">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </button>
+          <div class="log">
+            <img class="hero-log" src="./images/logo.svg" alt="logo" />
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- navigation open -->
+      <div class="navigation" id="navigation-demo">
+        <nav>
+          <div class="navigation-button">
+            <button class="button-nav">
+              <span class="close-button">Close</span>
+            </button>
+          </div>
+
+          <h3 class="navigation-heading">User Auth</h3>
+          <ul class="navigation-list">
+            <li class="api-url">
+              <span>POST</span><a href="#signUp">/auth/signUp</a>
+            </li>
+            <li class="api-url">
+              <span>POST</span><a href="#">/auth/signIn</a>
+            </li>
+            <li class="api-url"><span>GET</span><a href="#">/user</a></li>
+            <li class="api-url">
+              <span>GET</span><a href="#">/user?skip=1&limit=50</a>
+            </li>
+            <li class="api-url"><span>GET</span><a href="#">/user/:id</a></li>
+            <li class="api-url"><span>PUT</span><a href="#">/user/:id</a></li>
+            <li class="api-url">
+              <span>DELETE</span><a href="#">/user/:id</a>
+            </li>
+          </ul>
+
+          <h3 class="navigation-heading">Category</h3>
+          <ul class="navigation-list">
+            <li class="api-url"><span>POST</span><a href="#">/category</a></li>
+            <li class="api-url"><span>GET</span><a href="#">/category</a></li>
+            <li class="api-url">
+              <span>GET</span><a href="#">/category?skip=1&limit=50</a>
+            </li>
+            <li class="api-url">
+              <span>GET</span><a href="#">/category/:id</a>
+            </li>
+            <li class="api-url">
+              <span>PUT</span><a href="#">/category/:id</a>
+            </li>
+            <li class="api-url">
+              <span>DELETE</span><a href="#">/category/:id</a>
+            </li>
+          </ul>
+
+          <h3 class="navigation-heading">Product</h3>
+          <ul class="navigation-list">
+            <li class="api-url"><span>POST</span><a href="#">/product</a></li>
+            <li class="api-url"><span>GET</span><a href="#">/product</a></li>
+            <li class="api-url">
+              <span>GET</span><a href="#">/product?skip=1&limit=50</a>
+            </li>
+            <li class="api-url">
+              <span>GET</span><a href="#">/product/:id</a>
+            </li>
+            <li class="api-url">
+              <span>GET</span><a href="#">/product?search=c</a>
+            </li>
+            <li class="api-url">
+              <span>PUT</span><a href="#">/product/:id</a>
+            </li>
+            <li class="api-url">
+              <span>DELETE</span><a href="#">/product/:id</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- navigation close -->
+
+      <article style="padding: 15px">
+        <div class="hero-article">
+          <div class="hero-article-content">
+            <h1>Karma Technolabs API Documentation</h1>
+            <p>
+              Karma Technolabs API Documentation: Streamline your web
+              development process and enhance your website's capabilities with
+              our user-friendly API, offering a comprehensive range of features
+              and services.
+            </p>
+            <button class="git-hub-button">View on GitHub</button>
+          </div>
+          <div>
+            <div class="common-code-container">
+              <pre>
+                <code>
+                  var jsonData = {
+                    error: false,
+                    message: "request successfully",
+                    statusCode: 200,
+                    total: 2,
+                    data: [
+                      {
+                        status: "active",
+                        _id: "648201a2970d1da111a8c3c3",
+                        userName: "admin",
+                        createdAt: "2023-06-08T16:28:18.302Z",
+                        updatedAt: "2023-06-08T16:28:18.302Z",
+                        __v: 0,
+                      },
+                      {
+                        _id: "648205daffdc5a186881ed74",
+                        userName: "test",
+                        status: "active",
+                        createdAt: "2023-06-08T16:46:18.858Z",
+                        updatedAt: "2023-06-08T16:46:18.858Z",
+                        __v: 0,
+                      },
+                    ],
+                  };
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <div id="signUp" class="api-call-main">
+          <h1>Example Code Try it</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+fetch('https://karmatechnolabsapi.up.railway.app/api/users')
+  .then(response => response.json())
+  .then(json => console.log(json));
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="apiButton">Click Me</button>
+          <button class="btn btn--green" id="copyButton">Copy Response</button>
+          <div class="loader" id="loader">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="result">{💬: 🤔,}</div>
+        </div>
+      </article>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>
