@@ -1,5 +1,7 @@
 document.getElementById("apiButton").addEventListener("click", fetchData);
 document.getElementById("copyButton").addEventListener("click", copyResponse);
+// signUpButton
+document.getElementById("signUpButton").addEventListener("click", signUp);
 
 function copyResponse() {
   const resultDiv = document.getElementById("result");
@@ -27,6 +29,37 @@ function fetchData() {
   resultDiv.innerHTML = "";
 
   fetch("https://karmatechnolabsapi.up.railway.app/api/users")
+    .then((response) => response.json())
+    .then((data) => {
+      displayData(data);
+      // Hide the loading indicator
+      loader.style.display = "none";
+    })
+    .catch((error) => {
+      console.log(error);
+      // Hide the loading indicator
+      loader.style.display = "none";
+    });
+}
+
+function signUp() {
+  const loader = document.getElementById("loader");
+  const resultDiv = document.getElementById("signUpResult");
+
+  // Show the loading indicator
+  loader.style.display = "block";
+  resultDiv.innerHTML = "";
+
+  fetch("https://karmatechnolabsapi.up.railway.app/api/auth/signUp", {
+    method: "POST",
+    body: JSON.stringify({
+      userName: "foo",
+      password: "bar",
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       displayData(data);

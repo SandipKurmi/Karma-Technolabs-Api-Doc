@@ -117,7 +117,14 @@
               our user-friendly API, offering a comprehensive range of features
               and services.
             </p>
-            <button class="git-hub-button">View on GitHub</button>
+            <!-- https://karmatechnolabs.com/ -->
+            <a
+              class="karmatechnolabs-button"
+              href="https://karmatechnolabs.com/"
+              target="_blank"
+              >Visit Website</a
+            >
+            <!-- <button class="git-hub-button">View on GitHub</button> -->
           </div>
           <div>
             <div class="common-code-container">
@@ -153,15 +160,15 @@
           </div>
         </div>
 
-        <div id="signUp" class="api-call-main">
+        <div class="api-call-main">
           <h1>Example Code Try it</h1>
           <p>Run this code here, in a console or from any site:</p>
           <div class="common-code-container">
             <pre>
               <code>
-fetch('https://karmatechnolabsapi.up.railway.app/api/users')
-  .then(response => response.json())
-  .then(json => console.log(json));
+    fetch('https://karmatechnolabsapi.up.railway.app/api/users')
+      .then(response => response.json())
+      .then(json => console.log(json));
               </code>
             </pre>
           </div>
@@ -170,6 +177,36 @@ fetch('https://karmatechnolabsapi.up.railway.app/api/users')
           <div class="loader" id="loader">Lodding...</div>
           <h2>👇 Output</h2>
           <div class="common-code-container" id="result">{💬: 🤔,}</div>
+        </div>
+        <div id="signUp" class="api-call-main">
+          <h1>Sign Up</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    const requestBody = {
+      userName: "test",
+      password: "admin"
+    };
+
+    fetch(https://karmatechnolabsapi.up.railway.app/api/signUp, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(requestBody)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="signUpButton">Click Me</button>
+          <button class="btn btn--green" id="copyButton">Copy Response</button>
+          <div class="loader" id="loader">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="signUpResult">{💬: 🤔,}</div>
         </div>
       </article>
     </div>
