@@ -52,9 +52,11 @@
               <span>POST</span><a href="#signUp">/auth/signUp</a>
             </li>
             <li class="api-url">
-              <span>POST</span><a href="#">/auth/signIn</a>
+              <span>POST</span><a href="#signIn">/auth/signIn</a>
             </li>
-            <li class="api-url"><span>GET</span><a href="#">/user</a></li>
+            <li class="api-url">
+              <span>GET</span><a href="#userList">/user</a>
+            </li>
             <li class="api-url">
               <span>GET</span><a href="#">/user?skip=1&limit=50</a>
             </li>
@@ -203,12 +205,147 @@
             </pre>
           </div>
           <button class="btn btn--green" id="signUpButton">Click Me</button>
-          <button class="btn btn--green" id="copyButton">Copy Response</button>
-          <div class="loader" id="loader">Lodding...</div>
+          <button class="btn btn--green" id="copysignUpResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderSignUp">Lodding...</div>
           <h2>👇 Output</h2>
           <div class="common-code-container" id="signUpResult">{💬: 🤔,}</div>
         </div>
-      </article>
+        <!-- SignIn User -->
+        <div id="signIn" class="api-call-main">
+          <h1>Sign In</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    const requestBody = {
+      userName: "test",
+      password: "admin"
+    };
+    
+    fetch(https://karmatechnolabsapi.up.railway.app/api/signIn, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(requestBody)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="signInButton">Click Me</button>
+          <button class="btn btn--green" id="copySignInResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderSignIn">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="signInResult">{💬: 🤔,}</div>
+        </div>
+        <!-- User List -->
+        <div id="userList" class="api-call-main">
+          <h1>User List</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    fetch(https://karmatechnolabsapi.up.railway.app/api/user)
+      .then(response => response.json())
+      .then(json => console.log(json));
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="userListButton">Click Me</button>
+          <button class="btn btn--green" id="copyUserListResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderUserList">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="userListResult">{💬: 🤔,}</div>
+        </div>
+        <!-- User Detail -->
+        <div id="userDetail" class="api-call-main">
+          <h1>User Detail</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    fetch(https://karmatechnolabsapi.up.railway.app/api/user/648205daffdc5a186881ed74)
+      .then(response => response.json())
+      .then(json => console.log(json))
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="userDetailButton">Click Me</button>
+          <button class="btn btn--green" id="copyUserDetailResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderUserDetail">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="userDetailResult">{💬: 🤔,}</div>
+        </div>
+        <!-- Update User -->
+        <div id="updateUser" class="api-call-main">
+          <h1>Update User</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    const requestBody = {
+      userName: "test",
+      password: "admin"
+    };
+
+    fetch(https://karmatechnolabsapi.up.railway.app/api/user/648205daffdc5a186881ed74, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(requestBody)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="updateUserButton">Click Me</button>
+          <button class="btn btn--green" id="copyUpdateUserResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderUpdateUser">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="updateUserResult">{💬: 🤔,}</div>
+        </div>
+        <!-- Delete User -->
+        <div id="deleteUser" class="api-call-main">
+          <h1>Delete User</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    fetch(https://karmatechnolabsapi.up.railway.app/api/user/648205daffdc5a186881ed74, {
+      method: "DELETE"
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="deleteUserButton">Click Me</button>
+          <button class="btn btn--green" id="copyDeleteUserResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderDeleteUser">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="deleteUserResult">{💬: 🤔,}</div>
+        </div>
+      </div>
+
     </div>
   </body>
   <script src="./script.js"></script>
