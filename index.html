@@ -24,7 +24,9 @@
             <span class="line"></span>
           </button>
           <div class="log">
-            <img class="hero-log" src="./images/logo.svg" alt="logo" />
+            <a href="#">
+              <img class="hero-log" src="./images/logo.svg" alt="logo" />
+            </a>
           </div>
         </div>
 
@@ -58,30 +60,30 @@
               <span>GET</span><a href="#userList">/user</a>
             </li>
             <li class="api-url">
-              <span>GET</span><a href="#">/user?skip=1&limit=50</a>
+              <span>GET</span><a href="#userList">/user?skip=1&limit=50</a>
             </li>
-            <li class="api-url"><span>GET</span><a href="#">/user/:id</a></li>
-            <li class="api-url"><span>PUT</span><a href="#">/user/:id</a></li>
+            <li class="api-url"><span>GET</span><a href="#userDetail">/user/:id</a></li>
+            <li class="api-url"><span>PUT</span><a href="#updateUser">/user/:id</a></li>
             <li class="api-url">
-              <span>DELETE</span><a href="#">/user/:id</a>
+              <span>DELETE</span><a href="#deleteUser">/user/:id</a>
             </li>
           </ul>
 
           <h3 class="navigation-heading">Category</h3>
           <ul class="navigation-list">
-            <li class="api-url"><span>POST</span><a href="#">/category</a></li>
-            <li class="api-url"><span>GET</span><a href="#">/category</a></li>
+            <li class="api-url"><span>POST</span><a href="#createCategory">/category</a></li>
+            <li class="api-url"><span>GET</span><a href="#categoryList">/category</a></li>
             <li class="api-url">
-              <span>GET</span><a href="#">/category?skip=1&limit=50</a>
+              <span>GET</span><a href="#categoryList">/category?skip=1&limit=50</a>
             </li>
             <li class="api-url">
-              <span>GET</span><a href="#">/category/:id</a>
+              <span>GET</span><a href="#categoryDetails">/category/:id</a>
             </li>
             <li class="api-url">
-              <span>PUT</span><a href="#">/category/:id</a>
+              <span>PUT</span><a href="#updateCategory">/category/:id</a>
             </li>
             <li class="api-url">
-              <span>DELETE</span><a href="#">/category/:id</a>
+              <span>DELETE</span><a href="#deleteCategory">/category/:id</a>
             </li>
           </ul>
 
@@ -163,7 +165,7 @@
         </div>
 
         <div class="api-call-main">
-          <h1>Example Code Try it</h1>
+          <h1>Example Code Try it For User Auth</h1>
           <p>Run this code here, in a console or from any site:</p>
           <div class="common-code-container">
             <pre>
@@ -295,14 +297,15 @@
             <pre>
               <code>
     const requestBody = {
-      userName: "test",
+      userName: "Sandip Kurmi",
       password: "admin"
     };
 
     fetch(https://karmatechnolabsapi.up.railway.app/api/user/648205daffdc5a186881ed74, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(requestBody)
     })
@@ -312,6 +315,18 @@
               </code>
             </pre>
           </div>
+          <div class="input-field">
+            <label>
+              <span>Token</span>
+              <input
+              id="updateUserToken"
+                type="text"
+                name="token"
+                class="input"
+                placeholder="Enter Token"
+              />
+            </label>
+          </div>
           <button class="btn btn--green" id="updateUserButton">Click Me</button>
           <button class="btn btn--green" id="copyUpdateUserResultButton">
             Copy Response
@@ -320,6 +335,7 @@
           <h2>👇 Output</h2>
           <div class="common-code-container" id="updateUserResult">{💬: 🤔,}</div>
         </div>
+
         <!-- Delete User -->
         <div id="deleteUser" class="api-call-main">
           <h1>Delete User</h1>
@@ -336,6 +352,18 @@
               </code>
             </pre>
           </div>
+          <div class="input-field">
+            <label>
+              <span>Token</span>
+              <input
+              id="deleteUserToken"
+                type="text"
+                name="token"
+                class="input"
+                placeholder="Enter Token"
+              />
+            </label>
+          </div>
           <button class="btn btn--green" id="deleteUserButton">Click Me</button>
           <button class="btn btn--green" id="copyDeleteUserResultButton">
             Copy Response
@@ -344,6 +372,261 @@
           <h2>👇 Output</h2>
           <div class="common-code-container" id="deleteUserResult">{💬: 🤔,}</div>
         </div>
+
+        <!-- Category -->
+        <!-- {
+          "name": "Home Decor",
+          "description": "Category for decorative items for the home"
+      } -->
+      <!-- token -->
+        <div id="createCategory" class="api-call-main">
+          <h1>Create Category</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    const requestBody = {
+      name: "Home Decor",
+      description: "Category for decorative items for the home"
+    };
+
+    fetch(https://karmatechnolabsapi.up.railway.app/api/category, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(requestBody)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <!-- name -->
+          <div class="input-field">
+            <label>
+              <span>Name</span>
+              <input
+              id="createCategoryName"
+                type="text"
+                name="name"
+                class="input"
+                placeholder="Enter Name"
+              />
+            </label>
+          </div>
+          <!-- description -->
+          <div class="input-field">
+            <label>
+              <span>Description</span>
+              <input
+              id="createCategoryDescription"
+                type="text"
+                name="description"
+                class="input"
+                placeholder="Enter Description"
+              />
+            </label>
+          </div>
+          <div class="input-field">
+            <label>
+              <span>Token</span>
+              <input
+              id="createCategoryToken"
+                type="text"
+                name="token"
+                class="input"
+                placeholder="Enter Token"
+              />
+            </label>
+          </div>
+          <button class="btn btn--green" id="createCategoryButton">Click Me</button>
+          <button class="btn btn--green" id="copyCreateCategoryResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderCreateCategory">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="createCategoryResult">{💬: 🤔,}</div>
+        </div>
+
+        <!-- Category List -->
+        <div id="categoryList" class="api-call-main">
+          <h1>Category List</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    fetch(https://karmatechnolabsapi.up.railway.app/api/category)
+      .then(response => response.json())  
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="categoryListButton">Click Me</button>
+          <button class="btn btn--green" id="copyCategoryListResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderCategoryList">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="categoryListResult">{💬: 🤔,}</div>
+        </div>
+
+        <!-- Category Details -->
+        <div id="categoryDetails" class="api-call-main">
+          <h1>Category Details</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    fetch(https://karmatechnolabsapi.up.railway.app/api/category/648205daffdc5a186881ed74)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <button class="btn btn--green" id="categoryDetailsButton">Click Me</button>
+          <button class="btn btn--green" id="copyCategoryDetailsResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderCategoryDetail">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="categoryDetailResult">{💬: 🤔,}</div>
+        </div>
+
+        <!-- Update Category -->
+        <!-- {
+          "name": "Home Decor",
+          "description": "Category for decorative items for the home"
+      } -->
+      <!-- token -->
+        <div id="updateCategory" class="api-call-main">
+          <h1>Update Category</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    const requestBody = { 
+      name: "Home Decor",
+      description: "Category for decorative items for the home"
+    };
+
+    fetch(https://karmatechnolabsapi.up.railway.app/api/category/64a13f1930b810ec150aa918, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(requestBody)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <!-- name -->
+          <div class="input-field">
+            <label>
+              <span>Name</span>
+              <input
+              id="updateCategoryName"
+                type="text"
+                name="name"
+                class="input"
+                placeholder="Enter Name"
+              />
+            </label>
+          </div>
+          <!-- description -->
+          <div class="input-field">
+            <label>
+              <span>Description</span>
+              <input
+              id="updateCategoryDescription"
+                type="text"
+                name="description"
+                class="input"
+                placeholder="Enter Description"
+              />
+            </label>
+          </div>
+          <!-- status active inactive select input -->
+          <div class="input-field">
+            <label>
+              <span>Status</span>
+              <select id="updateCategoryStatus" class="input">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </label>
+          </div>
+          <div class="input-field">
+            <label>
+              <span>Token</span>
+              <input
+              id="updateCategoryToken"
+                type="text"
+                name="token"
+                class="input"
+                placeholder="Enter Token"
+              />
+            </label>
+          </div>
+          <button class="btn btn--green" id="updateCategoryButton">Click Me</button>
+          <button class="btn btn--green" id="copyUpdateCategoryResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderUpdateCategory">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="updateCategoryResult">{💬: 🤔,}</div>
+        </div>
+
+        <!-- Delete Category -->
+        <div id="deleteCategory" class="api-call-main">
+          <h1>Delete Category</h1>
+          <p>Run this code here, in a console or from any site:</p>
+          <div class="common-code-container">
+            <pre>
+              <code>
+    fetch(https://karmatechnolabsapi.up.railway.app/api/category/64a13f1930b810ec150aa918, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+              </code>
+            </pre>
+          </div>
+          <div class="input-field">
+            <label>
+              <span>Token</span>
+              <input
+              id="deleteCategoryToken"
+                type="text"
+                name="token"
+                class="input"
+                placeholder="Enter Token"
+              />
+            </label>
+          </div>
+          <button class="btn btn--green" id="deleteCategoryButton">Click Me</button>
+          <button class="btn btn--green" id="copyDeleteCategoryResultButton">
+            Copy Response
+          </button>
+          <div class="loader" id="loaderDeleteCategory">Lodding...</div>
+          <h2>👇 Output</h2>
+          <div class="common-code-container" id="deleteCategoryResult">{💬: 🤔,}</div>
+        </div>
+
+    
       </div>
 
     </div>

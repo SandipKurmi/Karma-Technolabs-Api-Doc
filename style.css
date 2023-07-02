@@ -333,3 +333,46 @@ article {
   font-size: 1.5rem;
   font-weight: 600;
 }
+
+.input-field {
+  width: 30%;
+}
+
+label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+
+label span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input {
+  background-color: #2b2b2b;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 10px 15px;
+  outline: 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+.input:focus {
+  border-color: #e3e3e3;
+}
+
+.input--select {
+  background-image: url("/assets/img/icon/down.svg");
+  background-position: 98% center;
+  background-repeat: no-repeat;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.input--textarea {
+  resize: vertical;
+}
