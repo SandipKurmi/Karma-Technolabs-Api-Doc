@@ -58,16 +58,12 @@ document
   .getElementById("copyCategoryListResultButton")
   .addEventListener("click", copyResponseOfCategoryList);
 
-// category detail
 document
   .getElementById("categoryDetailsButton")
   .addEventListener("click", categoryDetail);
 document
   .getElementById("copyCategoryDetailsResultButton")
   .addEventListener("click", copyResponseOfCategoryDetail);
-
-// updateCategoryButton
-// copyUpdateCategoryResultButton
 document
   .getElementById("updateCategoryButton")
   .addEventListener("click", updateCategory);
@@ -75,15 +71,31 @@ document
   .getElementById("copyUpdateCategoryResultButton")
   .addEventListener("click", copyResponseOfUpdateCategory);
 
-// deleteCategoryButton
-// copyDeleteCategoryResultButton
-
 document
   .getElementById("deleteCategoryButton")
   .addEventListener("click", deleteCategory);
 document
   .getElementById("copyDeleteCategoryResultButton")
   .addEventListener("click", copyResponseOfDeleteCategory);
+
+// product
+//   createProductButton
+// copyCreateProductResultButton
+document
+  .getElementById("createProductButton")
+  .addEventListener("click", createProduct);
+document
+  .getElementById("copyCreateProductResultButton")
+  .addEventListener("click", copyResponseOfCreateProduct);
+
+//   productListButton
+// copyProductListResultButton
+document
+  .getElementById("productListButton")
+  .addEventListener("click", productList);
+document
+  .getElementById("copyProductListResultButton")
+  .addEventListener("click", copyResponseOfProductList);
 
 // api call function
 
@@ -455,14 +467,11 @@ function updateCategory() {
 function deleteCategory() {
   const loader = document.getElementById("loaderDeleteCategory");
   const resultDiv = document.getElementById("deleteCategoryResult");
-
   // Show the loading indicator
   loader.style.display = "block";
   resultDiv.innerHTML = "";
-
   const tokenInput = document.getElementById("deleteCategoryToken");
   const token = tokenInput.value;
-
   fetch(
     "https://karmatechnolabsapi.up.railway.app/api/category/64a13f1930b810ec150aa918",
     {
@@ -479,10 +488,118 @@ function deleteCategory() {
       // Hide the loading indicator
       loader.style.display = "none";
     })
-
     .catch((error) => {
       console.log(error);
 
+      // Hide the loading indicator
+      loader.style.display = "none";
+    });
+}
+
+// product
+function createProduct() {
+  const loader = document.getElementById("loaderCreateProduct");
+  const resultDiv = document.getElementById("createProductResult");
+  // Show the loading indicator
+  loader.style.display = "block";
+  resultDiv.innerHTML = "";
+  const nameInput = document.getElementById("createProductName");
+  const name = nameInput.value;
+
+  const descriptionInput = document.getElementById("createProductDescription");
+  const description = descriptionInput.value;
+
+  const priceInput = document.getElementById("createProductPrice");
+  const price = priceInput.value;
+
+  const brandInput = document.getElementById("createProductBrand");
+  const brand = brandInput.value;
+
+  const colorInput = document.getElementById("createProductColor");
+  const color = colorInput.value;
+
+  const sizeInput = document.getElementById("createProductSize");
+  const size = sizeInput.value;
+
+  const quantityInput = document.getElementById("createProductQuantity");
+  const quantity = quantityInput.value;
+
+  const categoryInput = document.getElementById("createProductCategoryId");
+  const category = categoryInput.value;
+
+  const userIdInput = document.getElementById("createProductUserId");
+  const userId = userIdInput.value;
+
+  const tokenInput = document.getElementById("createProductToken");
+  const token = tokenInput.value;
+
+  fetch("https://karmatechnolabsapi.up.railway.app/api/product", {
+    method: "POST",
+    body: JSON.stringify({
+      name: name,
+      description: description,
+      price: price,
+      brand: brand,
+      color: color,
+      size: size,
+      quantity: quantity,
+      category_id: category,
+      user_id: userId,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      displayDataOfCreateProduct(data);
+      // Hide the loading indicator
+      loader.style.display = "none";
+    })
+    .catch((error) => {
+      console.log(error);
+      // Hide the loading indicator
+      loader.style.display = "none";
+    });
+}
+
+function productList() {
+  const loader = document.getElementById("loaderProductList");
+  const resultDiv = document.getElementById("productListResult");
+  // Show the loading indicator
+  loader.style.display = "block";
+  resultDiv.innerHTML = "";
+
+  const skipInput = document.getElementById("productListSkip");
+  const skip = skipInput.value;
+
+  // search
+  const searchInput = document.getElementById("productListSearch");
+  const search = searchInput.value;
+
+  const limitInput = document.getElementById("productListLimit");
+  const limit = limitInput.value;
+
+  fetch(
+    `https://karmatechnolabsapi.up.railway.app/api/product?skip=${
+      skip || 1
+    }&limit=${limit || 10}&search=${search || ""}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      displayDataOfProductList(data);
+      // Hide the loading indicator
+      loader.style.display = "none";
+    })
+    .catch((error) => {
+      console.log(error);
       // Hide the loading indicator
       loader.style.display = "none";
     });
@@ -721,6 +838,44 @@ function copyResponseOfDeleteCategory() {
   }, 2000);
 }
 
+// product
+function copyResponseOfCreateProduct() {
+  const resultDiv = document.getElementById("createProductResult");
+  const range = document.createRange();
+
+  range.selectNode(resultDiv);
+  window.getSelection().removeAllRanges();
+
+  window.getSelection().addRange(range);
+  document.execCommand("copy");
+
+  window.getSelection().removeAllRanges();
+
+  // Add a visual cue to indicate the response has been copied
+  const copyButton = document.getElementById("copyCreateProductResultButton");
+  copyButton.textContent = "Response Copied!";
+  setTimeout(() => {
+    copyButton.textContent = "Copy Response";
+
+    // Reset the button text after 2 seconds
+  }, 2000);
+}
+
+function copyResponseOfProductList() {
+  const resultDiv = document.getElementById("productListResult");
+  const range = document.createRange();
+  range.selectNode(resultDiv);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand("copy");
+  window.getSelection().removeAllRanges();
+  const copyButton = document.getElementById("copyProductListResultButton");
+  copyButton.textContent = "Response Copied!";
+  setTimeout(() => {
+    copyButton.textContent = "Copy Response";
+  }, 2000);
+}
+
 // display functions
 
 function displayData(data) {
@@ -781,6 +936,17 @@ function displayDataOfUpdateCategory(data) {
 
 function displayDataOfDeleteCategory(data) {
   const resultDiv = document.getElementById("deleteCategoryResult");
+  resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+}
+
+// product display
+function displayDataOfCreateProduct(data) {
+  const resultDiv = document.getElementById("createProductResult");
+  resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+}
+
+function displayDataOfProductList(data) {
+  const resultDiv = document.getElementById("productListResult");
   resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
 }
 

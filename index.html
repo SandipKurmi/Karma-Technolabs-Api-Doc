@@ -33,7 +33,7 @@
         <div class="nav-item">
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Documentation</a></li>
+            <!-- <li><a href="#">Documentation</a></li> -->
             <li><a href="#">Contact Us</a></li>
           </ul>
         </div>
@@ -89,10 +89,10 @@
 
           <h3 class="navigation-heading">Product</h3>
           <ul class="navigation-list">
-            <li class="api-url"><span>POST</span><a href="#">/product</a></li>
-            <li class="api-url"><span>GET</span><a href="#">/product</a></li>
+            <li class="api-url"><span>POST</span><a href="#createProduct">/product</a></li>
+            <li class="api-url"><span>GET</span><a href="#productList">/product</a></li>
             <li class="api-url">
-              <span>GET</span><a href="#">/product?skip=1&limit=50</a>
+              <span>GET</span><a href="#productList">/product?skip=1&limit=50</a>
             </li>
             <li class="api-url">
               <span>GET</span><a href="#">/product/:id</a>
@@ -626,9 +626,260 @@
           <div class="common-code-container" id="deleteCategoryResult">{💬: 🤔,}</div>
         </div>
 
+        <!-- product api -->
+        <!--  {
+    "name": "Smartphone",
+    "description": "High-end smartphone with advanced features",
+    "price": 999.99,
+    "brand": "ABC",
+    "color": "black",
+    "size": "M", => ['S', 'M', 'L', 'XL', 'XXL'],
+    "quantity": 10,
+    "category_id": "64820cbf878b2882b6604c60",
+    "user_id": "648201a2970d1da111a8c3c3"
+  }, -->
+
+  <!-- Create Product -->
+  <div id="createProduct" class="api-call-main">
+    <h1>Create Product</h1>
+    <p>Run this code here, in a console or from any site:</p>
+    <div class="common-code-container">
+      <pre>
+        <code>
+  const requestBody = {
+    name: "Smartphone",
+    description: "High-end smartphone with advanced features",
+    price: 999.99,
+    brand: "ABC",
+    color: "black",
+    size: "M",
+    quantity: 10,
+    category_id: "64820cbf878b2882b6604c60",
+    user_id: "648201a2970d1da111a8c3c3"
+  };
+
+  fetch(https://karmatechnolabsapi.up.railway.app/api/product, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(requestBody)
+  })
+
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+        </code>
+      </pre>
+    </div>
+    <!-- name -->
+    <div class="input-field">
+      <label>
+        <span>Name</span>
+        <input
+        id="createProductName"
+          type="text"
+          name="name"
+          class="input"
+          placeholder="Enter Name"
+        />
+      </label>
+    </div>
+    <!-- description -->
+    <div class="input-field">
+      <label>
+        <span>Description</span>
+        <input
+        id="createProductDescription"
+          type="text"
+          name="description"
+          class="input"
+          placeholder="Enter Description"
+        />
+      </label>
+    </div>
+    <!-- price -->
+    <div class="input-field">
+      <label>
+        <span>Price</span>
+        <input
+        id="createProductPrice"
+          type="number"
+          name="price"
+          class="input"
+          placeholder="Enter Price"
+        />
+      </label>
+    </div>
+    <!-- brand -->
+    <div class="input-field">
+      <label>
+        <span>Brand</span>
+        <input
+        id="createProductBrand"
+          type="text"
+          name="brand"
+          class="input"
+          placeholder="Enter Brand"
+        />
+      </label>
+    </div>
+    <!-- color select input with this value =>  ['red', 'blue', 'green', 'black', 'white'],-->
+      <div  class="input-field">
+        <label>
+          <span>Color</span>
+          <select id="createProductColor" name="color" class="input">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+          </select>
+        </label>
+      </div>
+    <!-- size select input with this value => ['S', 'M', 'L', 'XL', 'XXL'], -->
+    <div class="input-field">
+      <label>
+        <span>Size</span>
+        <select id="createProductSize" name="size" class="input">
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+        </select>
+      </label>
+    </div>
+    <!-- quantity -->
+    <div class="input-field">
+      <label>
+        <span>Quantity</span>
+        <input
+        id="createProductQuantity"
+          type="number"
+          name="quantity"
+          class="input"
+          placeholder="Enter Quantity"
+        />
+      </label>
+    </div>
+    <!-- category_id -->
+    <div class="input-field">
+      <label>
+        <span>Category Id</span>
+        <input
+        id="createProductCategoryId"
+          type="text"
+          name="category_id"
+          class="input"
+          placeholder="Enter Category Id"
+        />
+      </label>
+    </div>
+    <!-- user_id -->
+    <div class="input-field">
+      <label>
+        <span>User Id</span>
+        <input
+        id="createProductUserId"
+          type="text"
+          name="user_id"
+          class="input"
+          placeholder="Enter User Id"
+        />
+      </label>
+    </div>  
+    <!-- toke -->
+    <div class="input-field">
+      <label>
+        <span>Token</span>
+        <input
+        id="createProductToken"
+          type="text"
+          name="token"
+          class="input"
+          placeholder="Enter Token"
+        />
+      </label>
+    </div>
+    <button class="btn btn--green" id="createProductButton">Click Me</button>
+    <button class="btn btn--green" id="copyCreateProductResultButton">
+      Copy Response
+    </button>
+    <div class="loader" id="loaderCreateProduct">Lodding...</div>
+    <h2>👇 Output</h2>
+    <div class="common-code-container" id="createProductResult">{💬: 🤔,}</div>
+  </div>
+<!-- Product List -->
+  <div id="productList" class="api-call-main">
+    <h1>Product List</h1>
+    <p>Run this code here, in a console or from any site:</p>
+    <div class="common-code-container">
+      <pre>
+        <code>
+  fetch(https://karmatechnolabsapi.up.railway.app/api/product?skip=1&limit=10&search=c, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+        </code>
+      </pre>
+    </div>
+    <p>Skip, limit and search are optional</p>
+    <div class="input-field">
+      <label>
+        <span>Skip</span>
+        <input
+        id="productListSkip"
+          type="number"
+          name="skip"
+          class="input"
+          placeholder="Enter Skip"
+        />
+      </label>
+    </div>
+    <div class="input-field">
+      <label>
+        <span>Limit</span>
+        <input
+        id="productListLimit"
+          type="number"
+          name="limit"
+          class="input"
+          placeholder="Enter Limit"
+        />
+      </label>
+    </div>
+    <div class="input-field">
+      <label>
+        <span>Search</span>
+        <input
+        id="productListSearch"
+          type="text"
+          name="search"
+          class="input"
+          placeholder="Enter Search"
+        />
+      </label>
+    </div>
+    <button class="btn btn--green" id="productListButton">Click Me</button>
+    <button class="btn btn--green" id="copyProductListResultButton">
+      Copy Response
+    </button>
+    <div class="loader" id="loaderProductList">Lodding...</div>
+    <h2>👇 Output</h2>
+    <div class="common-code-container" id="productListResult">{💬: 🤔,}</div>
+  </div>
+
+
     
       </div>
-
     </div>
   </body>
   <script src="./script.js"></script>
